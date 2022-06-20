@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Palindrome&3Sum</title>
+
+    </head>
+    <body>
+        <div>
+           <p>check console to see the output of palindrome and 3 sum algo</p>
+        </div>
+        <script>
+             function palindrome(str){
+              str = str.toLowerCase();
+              // First method
+              // check 1st and last character, 2nd and second last and so on
+              let len = str.length;
+              for(let index=0; index<len/2; index++){
+                  if(str[index] !== str[len-1-index]){
+                    return false;
+                   }
+                }
+               return true;
+
+            }
+
+            function pal(str){
+              let toArr = str.split("") // hello => [h, e, l, l, o]
+             let revArr = toArr.reverse() // [o, l, l, e, h]
+             let revStr = revArr.join("");
+             if(str === revStr){
+               return true;
+             }else{
+               return false;
+               }
+            }
+             console.log(palindrome("naman"));
+             console.log(pal("abcddcba"));
+             //**************sum of 3**************//
+             function sumOf3(arr,target){
+                let len=arr.length;
+                let closestSum=10000000;
+                for(let i=0;i<len-2;i++){
+                    for(let j=i+1;j<len-1;j++){
+                        for(let k=j+1;k<len;k++){
+                            let currSum=arr[i]+arr[j]+arr[k];
+                            if(Math.abs(currSum-target)<Math.abs(closestSum-target))
+                             closestSum=currSum;
+                        }
+                    }
+                }
+                return closestSum;
+             }
+             console.log(sumOf3([0,-1,2,4],5));
+        </script>
+    </body>
+</html>
